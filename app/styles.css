@@ -1,0 +1,45 @@
+/* You can add global styles to this file, and also import other style files */
+/* For Navigation Bar */
+.topnav {
+    background-color: black;
+    overflow: hidden;
+}
+
+.topnav a {
+    float: left;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    color: black;
+    background-color:lightgray;
+}
+
+.topnav a.active {
+    color: black;
+    background-color: lightsteelblue;
+}
+
+/* For Login/Register Forms */
+.container-fluid { 
+    padding: 25px;
+    width: auto;
+    border-color: blue;
+    border-style: solid;
+    position: right;
+    margin: 50px;
+}
+
+/* For Individual Component Headings */
+h3 {
+    text-align: center; 
+    padding: 25px;
+}
+
+.tab {
+    margin-left: 20px;
+}
