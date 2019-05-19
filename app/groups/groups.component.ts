@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GroupsComponent implements OnInit {
 
+  public groups = []; //Array for list of groups (all groups)
+  
   constructor() { }
 
   ngOnInit() {
