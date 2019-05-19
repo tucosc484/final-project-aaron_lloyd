@@ -23,6 +23,11 @@ function startServer(ordersDatastore: OrdersDatastore) {
 
   const port = process.env.PORT || 3000;
   
+  app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+  });
+
+
   //GET all Users, Groups, Posts
   app.get('/users', async (request: Request, response: Response) => {
     const users = await ordersDatastore.readAllUsers();
@@ -55,11 +60,15 @@ function startServer(ordersDatastore: OrdersDatastore) {
     response.json({ threeLargestGroups });
   });
   
-  //returns the list of members for a certiain group
   app.get('/groups/groupmembers', async (request: Request, response: Response) => {
     const groupName = request.body.title; 
     const membersOfGroup = await ordersDatastore.readGroupMembers(groupName);
     response.json({ membersOfGroup });
+  });
+
+  app.get('/posts/top', async (request: Request, response: Response) => {
+    const topFivePost = await ordersDatastore.mostPopularPosts();
+    response.json({ topFivePost });
   });
 
 
@@ -101,9 +110,10 @@ function startServer(ordersDatastore: OrdersDatastore) {
     }
   });
 
-
+  //POST new topic
     
-  //Delete new User, Group, Post
+
+  //Delete User, Group, Post
   app.delete('/users/:id', async (request, response) => {
     const id = request.params.id;
     try {
@@ -115,8 +125,35 @@ function startServer(ordersDatastore: OrdersDatastore) {
   });
 
 
+  //PUT or UPDATE or PATCH Functions to update documents
+  
+  //Join a Group
 
-  app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+  //Edit Profile
+
+  //Add replies/comments to topics(?)
+
+  //Like a post
+  app.patch('/posts/like/:id', async (request, response) => {
+    const id = request.params.id; 
+    try {
+      await ordersDatastore.likePost(id);
+      response.sendStatus(200);
+    } catch (error) {
+      response.sendStatus(500);
+    }
   });
+
+  //Dislike a post
+  app.patch('/posts/dislike/:id', async (request, response) => {
+    const id = request.params.id; 
+    try {
+      await ordersDatastore.dislikePost(id);
+      response.sendStatus(200);
+    } catch (error) {
+      response.sendStatus(500);
+    }
+  });
+
+
 }
