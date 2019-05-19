@@ -1,32 +1,42 @@
-<div class="container-fluid">
-  <h2>Register</h2>
-  <form #registerForm="ngForm">  
-    
-      Input Check:
-      {{ registerForm.value | json }}
-    
-    <!-- <div class="form-group">
-        <label>First Name</label>
-        <input type="text" class="form-control" name="firstName" ngModel>
-    </div>
-      <div class="form-group">
-        <label>Last Name</label>
-        <input type="text" class="form-control" name="lastName" ngModel>
-    </div>   -->
-    <div class="form-group">
-      <label>Email</label>
-      <input type="email" class="form-control" name="email" ngModel>
-    </div> 
-    <div class="form-group">
-          <label>Username</label>
-          <input type="text" class="form-control" name="userName" ngModel>
+<div class="medium-list">
+  <div class="list-viewer-wrapper">
+    <div class="list-header-title">Register</div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="registerForm.valid && onRegisterSubmit()" novalidate>
+      <div class="form-container">
+        <mat-form-field>
+          <input id="name"
+                 matInput
+                 formControlName="name"
+                 [(ngModel)]="user.name"
+                 placeholder="Enter your name" />
+        </mat-form-field>
+
+        <mat-form-field>
+            <input id="email"
+                   matInput
+                   formControlName="email"
+                   [(ngModel)]="user.email"
+                   placeholder="Enter your email" />
+          </mat-form-field>
+
+        <mat-form-field>
+            <input id="password"
+                   matInput
+                   formControlName="password"
+                   [(ngModel)]="user.password"
+                   placeholder="Enter your password"
+                   [type]="hide ? 'password':'text'" />
+              <mat-icon matSuffix (click)="hide = !hide">
+                {{hide ? 'visibility' : 'visibility_off'}}
+              </mat-icon>
+          </mat-form-field>
+
+          <button mat-button type="submit" 
+                  class="mat-raised-button mat-primary" 
+                  [disabled]="!registerForm.valid">Register</button>
+          <button mat-button routerLink="/login" class="divider">Login</button>
       </div>
-      <div class="form-group">
-          <label>Password</label>
-          <input type="text" class="form-control" name="password" ngModel>
-      </div>
-      
-      <button class="btn btn-primary" type="submit">Register</button>
-      <a routerLink ="/profile" class="btn btn-link">Cancel</a>
-  </form>
+    </form>
+  </div>
 </div>
