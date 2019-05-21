@@ -1,4 +1,4 @@
-mport { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ComponentBase } from 'buildmotion-core';
 import { Router } from '@angular/router';
 import { LoggingService, Severity } from 'buildmotion-logging';
