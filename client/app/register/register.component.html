@@ -1,0 +1,35 @@
+<div class="container-fluid">
+  <h2>Register</h2>
+  <form #registerForm="ngForm" (ngSubmit)="onSubmit()">  
+    
+    <!-- Input Check:
+    {{ registerForm.value | json }}
+     <br>
+    {{ userModel | json }}  -->
+
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" class="form-control" name="email" [(ngModel)]="userModel.email">
+    </div> 
+
+    <div class="form-group">
+        <label>Username</label>
+        <input type="text" class="form-control" name="userName" [(ngModel)]="userModel.userName">
+    </div>
+
+    <div class="form-group">
+        <label>Password</label>
+        <input type="text" class="form-control" name="password" [(ngModel)]="userModel.password">
+    </div>
+
+    <!-- <div class="form-group">
+      <label>Interest</label>
+      <input type="text" class="form-control" name="interest" [(ngModel)]="userModel.interest">
+    </div> -->
+      
+      <button class="btn btn-primary" type="submit">Register</button>
+      <a routerLink ="/profile" class="btn btn-link">Cancel</a>
+  </form>
+</div>
+
+<!-- <button class="btn btn-primary" type="submit" (click)="getAllUsers()">Get Users</button> -->

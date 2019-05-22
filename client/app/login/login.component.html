@@ -1,0 +1,21 @@
+<!--Form for Login-->
+<div class="container-fluid">
+  <h2>Login</h2>
+  <form #loginForm="ngForm" (ngSubmiy)="getUser()" #f="ngForm">
+<!--     
+        Input Check:
+        {{ loginForm.value | json }} -->
+    
+      <div class="form-group">
+          <label>Username</label>
+          <input type="text" class="form-control" name="username"  [(ngModel)]="username">
+      </div>
+      <div class="form-group">
+          <label>Password</label>
+          <input type="text" class="form-control" name="password"  [(ngModel)]="password">
+      </div>
+      
+      <button class="btn btn-primary" type="submit">Login</button> <!--Need to add function to send data-->
+      <a routerLink ="/register" class="btn btn-link">Register</a> 
+  </form>
+</div>
